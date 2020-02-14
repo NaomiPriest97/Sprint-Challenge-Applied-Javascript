@@ -9,50 +9,50 @@
 //    <div class="tab">topic here</div>
 
  const topic = document.querySelector('.topics');
- console.log(topic);
- topic.appendChild(lambdaTopics());
+  console.log(topic);
+//  topic.appendChild(lambdaTopics());
 
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
 .then(response => {
-    console.log(response)
+    //console.log(response)
     topic.appendChild(lambdaTopics(response.data));
-    
+    console.log(response.data.topics);
+
 })
 .catch(error => {
     console.log('code is not running', error);
 });
 
 
-// axios.get('https://lambda-times-backend.herokuapp.com/topics')
-// .then(response => {
-//     Object(response.data).forEach(item => {
-//       axios.get(item.topics)
-//       .then(response => {
-//         topic.appendChild(lambdaTopics(response.data));
-//       })
-//     })
-//   })
-//   .catch(error => {
-//     console.log('code isnt running', error);
-//   });
 
 
-function lambdaTopics(obj){
-    const tabsDiv = document.createElement('div');
-    const topicDiv = document.createElement('div');
-    const titleSpan = document.createElement('span');
-    const tabs = document.createElement('div');
 
-    tabsDiv.classList.add('tabs');
-    topicDiv.classList.add('topics');
-    titleSpan.classList.add('title');
-    tabs.classList.add('tab');
+function lambdaTopics(topics){
+    const divTopics = document.createElement('div');
+    const tabs1 = document.createElement('div');
+    const tabs2 = document.createElement('div');
+    const tabs3 = document.createElement('div');
+    const tabs4 = document.createElement('div');
+    const tabs5 = document.createElement('div');
 
-    tabsDiv.appendChild(topicDiv);
-    topicDiv.appendChild(titleSpan);
-    topicDiv.appendChild(tabs);
+    divTopics.classList.add('topics')
+    tabs1.classList.add('tab');
+    tabs2.classList.add('tab');
+    tabs3.classList.add('tab');
+    tabs4.classList.add('tab');
+    tabs5.classList.add('tab');
 
-    tabs.textContent = `${obj.topics}`;
+    divTopics.appendChild(tabs1);
+    divTopics.appendChild(tabs2);
+    divTopics.appendChild(tabs3);
+    divTopics.appendChild(tabs4);
+    divTopics.appendChild(tabs5);
 
-    return tabsDiv;
+    tabs1.textContent = `${topics.topics[0]}`;
+    tabs2.textContent = `${topics.topics[1]}`;
+    tabs3.textContent = `${topics.topics[2]}`;
+    tabs4.textContent = `${topics.topics[3]}`;
+    tabs5.textContent = `${topics.topics[4]}`;
+
+    return divTopics;
 }
