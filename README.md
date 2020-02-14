@@ -30,7 +30,11 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+Dom stands for document object model. Every web page resides inside a browser window which can be considered as an object.
+
 2. What is an event?
+
+
 
 3. What is an event listener?
 
